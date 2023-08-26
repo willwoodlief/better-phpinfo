@@ -107,6 +107,25 @@ class Info {
         $extension_list = shell_exec("php -m");
         $extension_div = '<div style="white-space:pre"><h1>Extension list</h1>'.$extension_list.'</div>';
         $content .= $extension_div;
+
+        try {
+            if (defined('DB_HOST') && defined('DB_USER') && defined('DB_PASSWORD')) {
+                mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+                $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
+
+                /* print server version */
+                $mysql_info =  sprintf("Server version: %s\n", mysqli_get_server_info($link));
+            } else {
+                $mysql_info = "Cannot find credentials";
+            }
+
+        } catch (\Exception $e) {
+            $mysql_info = $e->getMessage();
+        }
+
+        $mysql_info_div = '<div style="white-space:pre"><h1>DB</h1>'.$mysql_info.'</div>';
+        $content .= $mysql_info_div;
+
         // Display content
         echo $content;
     }

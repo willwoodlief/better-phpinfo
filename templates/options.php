@@ -5,6 +5,7 @@
 		</h2>
 
 		<div class="phpinfo-content">
+            <?php /** @uses Php_Info\Info::display_info() */?>
 			<?php $this->display_info(); ?>
 		</div><!-- /.content -->
 	</div><!-- /.wrap -->

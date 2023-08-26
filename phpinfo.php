@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Better PHP Info
  * Description: Shows php info to admins
- * Version:     1.1.2
+ * Version:     1.1.3
  * Author: Stanimir Stoyanov slightly modified by Will Woodlief
  * Text Domain: better-php-info
 */
